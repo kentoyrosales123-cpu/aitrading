@@ -1,21 +1,29 @@
 {
   "name": "ai-agent-for-crypto",
   "version": "1.0.0",
+  "description": "AI-powered crypto trading terminal",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
-  "keywords": [],
+  "keywords": [
+    "crypto",
+    "ai",
+    "trading",
+    "mongodb",
+    "express"
+  ],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "engines": {
+    "node": "20.x"
+  },
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mongodb": "6.16.0",
-    "mongoose": "8.15.1",
+    "mongoose": "^8.15.1",
     "node-fetch": "^2.7.0",
     "rss-parser": "^3.13.0",
     "twitter-api-v2": "^1.29.0"
