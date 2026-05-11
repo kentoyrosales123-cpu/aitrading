@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto AI Terminal</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- HOME PAGE -->
+    <section id="homePage" class="auth-page home-page">
+      <nav class="auth-nav">
+        <div class="brand">
+          <span class="brand-orb"></span>
+          <strong>Crypto AI Terminal</strong>
+        </div>
+
+        <div class="nav-actions">
+          <a class="nav-link" href="#portfolioSection">Portfolio</a>
+          <button class="ghost-btn" onclick="showPage('loginPage')">
+            Login
+          </button>
+          <button class="primary-btn" onclick="showPage('registerPage')">
+            Register
+          </button>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="hero-content">
+          <span class="eyebrow">AI-powered crypto monitoring</span>
+          <h1>
+            Track crypto signals, live charts, news impact, and market sentiment
+            in one terminal.
+          </h1>
+          <p>
+            Monitor BTC, ETH, SOL, BNB, and XRP with AI-assisted entry, exit,
+            risk, confidence, world news, and X sentiment analysis.
+          </p>
+
+          <div class="hero-actions">
+            <button
+              class="primary-btn large"
+              onclick="showPage('registerPage')"
+            >
+              Create Account
+            </button>
+            <button class="ghost-btn large" onclick="showPage('loginPage')">
+              Login
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="mini-chart"></div>
+          <h3>AI Market Signal</h3>
+          <p>Bullish momentum detected</p>
+          <div class="hero-metrics">
+            <span>Entry: Wait for pullback</span>
+            <span>Risk: Medium</span>
+            <span>Confidence: 78%</span>
+          </div>
+        </div>
+      </div>
+
+      <section id="portfolioSection" class="portfolio-section">
+        <div class="section-heading">
+          <span class="eyebrow">Portfolio feature</span>
+          <h2>Built-in trading portfolio overview</h2>
+          <p>
+            Track watched assets, performance ideas, and AI-backed trading plans
+            directly from the home page before entering the terminal.
+          </p>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="portfolio-card featured">
+            <div class="portfolio-icon">₿</div>
+            <span class="portfolio-tag">Active Watchlist</span>
+            <h3>BTC / USDT Monitor</h3>
+            <p>
+              Follow Bitcoin price action with AI entry, exit, support,
+              resistance, and high-impact news scoring.
+            </p>
+            <div class="portfolio-stats">
+              <span><strong>15m</strong> Chart</span>
+              <span><strong>Live</strong> News</span>
+              <span><strong>AI</strong> Signal</span>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="portfolio-icon">Ξ</div>
+            <span class="portfolio-tag">Market Scan</span>
+            <h3>ETH Momentum Tracker</h3>
+            <p>
+              Analyze Ethereum movement using technical score, market sentiment,
+              and world news impact.
+            </p>
+            <button class="portfolio-btn" onclick="showPage('loginPage')">
+              Open Tracker
+            </button>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="portfolio-icon">◎</div>
+            <span class="portfolio-tag">Altcoin Setup</span>
+            <h3>SOL Risk Dashboard</h3>
+            <p>
+              Review AI confidence, suggested stop loss, trade risk, and
+              short-term volume behavior.
+            </p>
+            <button class="portfolio-btn" onclick="showPage('registerPage')">
+              Create Portfolio
+            </button>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="portfolio-icon">✦</div>
+            <span class="portfolio-tag">Coming Feature</span>
+            <h3>Personal Holdings</h3>
+            <p>
+              Add your own tokens, estimated buy price, target sell price, and
+              profit/loss tracking.
+            </p>
+            <button class="portfolio-btn" onclick="showPage('registerPage')">
+              Start Now
+            </button>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <!-- LOGIN PAGE -->
+    <section id="loginPage" class="auth-page hidden">
+      <div class="auth-box">
+        <button class="back-btn" onclick="showPage('homePage')">← Back</button>
+        <h2>Welcome back</h2>
+        <p>Login to open your AI trading terminal.</p>
+
+        <form onsubmit="loginUser(event)">
+          <label>Email</label>
+          <input
+            id="loginEmail"
+            type="email"
+            placeholder="Enter your email"
+            required
+          />
+
+          <label>Password</label>
+          <input
+            id="loginPassword"
+            type="password"
+            placeholder="Enter your password"
+            required
+          />
+
+          <button class="primary-btn full" type="submit">Login</button>
+        </form>
+
+        <small>
+          No account yet?
+          <button onclick="showPage('registerPage')">Register here</button>
+        </small>
+      </div>
+    </section>
+
+    <!-- REGISTER PAGE -->
+    <section id="registerPage" class="auth-page hidden">
+      <div class="auth-box">
+        <button class="back-btn" onclick="showPage('homePage')">← Back</button>
+        <h2>Create account</h2>
+        <p>Register to access the crypto AI dashboard.</p>
+
+        <form onsubmit="registerUser(event)">
+          <label>Full Name</label>
+          <input
+            id="registerName"
+            type="text"
+            placeholder="Enter your name"
+            required
+          />
+
+          <label>Email</label>
+          <input
+            id="registerEmail"
+            type="email"
+            placeholder="Enter your email"
+            required
+          />
+
+          <label>Password</label>
+          <input
+            id="registerPassword"
+            type="password"
+            placeholder="Create password"
+            required
+          />
+
+          <button class="primary-btn full" type="submit">Register</button>
+        </form>
+
+        <small>
+          Already have an account?
+          <button onclick="showPage('loginPage')">Login here</button>
+        </small>
+      </div>
+    </section>
+
+    <!-- TRADING TERMINAL -->
+    <div id="terminalPage" class="layout hidden">
+      <main class="main">
+        <header class="topbar">
+          <div class="top-left">
+            <h2>AI Crypto Trading Terminal</h2>
+            <span>Live AI Market Monitoring</span>
+          </div>
+
+          <div class="token-selector">
+            <button onclick="changeSymbol('BINANCE:BTCUSDT')">BTC</button>
+            <button onclick="changeSymbol('BINANCE:ETHUSDT')">ETH</button>
+            <button onclick="changeSymbol('BINANCE:SOLUSDT')">SOL</button>
+            <button onclick="changeSymbol('BINANCE:BNBUSDT')">BNB</button>
+            <button onclick="changeSymbol('BINANCE:XRPUSDT')">XRP</button>
+            <button class="logout-btn" onclick="logoutUser()">Logout</button>
+          </div>
+        </header>
+
+        <div class="terminal-body">
+          <section class="chart-section">
+            <div id="tradingview_chart"></div>
+          </section>
+
+          <aside class="ai-sidebar">
+            <h2>AI Agent Signal</h2>
+            <div id="aiSignal">Analyzing market...</div>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://s3.tradingview.com/tv.js"></script>
+
+    <script>
+      let widget;
+      let currentSymbol = "BINANCE:BTCUSDT";
+
+      async function loadXSentiment() {
+        try {
+          const res = await fetch("/api/x-sentiment");
+          const posts = await res.json();
+
+          document.getElementById("xImpact").innerHTML = posts
+            .map(
+              (post) => `
+          <div class="x-post">
+            <strong>${post.sentiment}</strong>
+            <p>${post.text}</p>
+            <small>Likes: ${post.likes} | Reposts: ${post.reposts}</small>
+          </div>
+        `,
+            )
+            .join("");
+        } catch (error) {
+          document.getElementById("xImpact").innerHTML =
+            "Unable to load X sentiment.";
+        }
+      }
+
+      function loadChart(symbol) {
+        document.getElementById("tradingview_chart").innerHTML = "";
+
+        widget = new TradingView.widget({
+          container_id: "tradingview_chart",
+          autosize: true,
+          symbol,
+          interval: "15",
+          timezone: "Asia/Manila",
+          theme: "dark",
+          style: "1",
+          locale: "en",
+          toolbar_bg: "#0f172a",
+          enable_publishing: false,
+          allow_symbol_change: true,
+          withdateranges: true,
+          hide_side_toolbar: false,
+          details: true,
+          hotlist: true,
+          calendar: true,
+          studies: [
+            "RSI@tv-basicstudies",
+            "MACD@tv-basicstudies",
+            "MASimple@tv-basicstudies",
+          ],
+        });
+      }
+
+      function changeSymbol(symbol) {
+        currentSymbol = symbol;
+
+        loadChart(symbol);
+        getAISignal(symbol);
+
+        document
+          .querySelectorAll(".token-selector button")
+          .forEach((btn) => btn.classList.remove("active"));
+
+        const symbolName = symbol.split(":")[1].replace("USDT", "");
+
+        document.querySelectorAll(".token-selector button").forEach((btn) => {
+          if (btn.innerText === symbolName) {
+            btn.classList.add("active");
+          }
+        });
+      }
+
+      async function getAISignal(symbol = currentSymbol) {
+        try {
+          const symbolName = symbol
+            .split(":")[1]
+            .replace("USDT", "")
+            .toLowerCase();
+
+          const res = await fetch(`/api/ai-signal/${symbolName}`);
+          const coin = await res.json();
+
+          if (!coin || coin.error) {
+            document.getElementById("aiSignal").innerHTML =
+              "Failed to analyze market.";
+            return;
+          }
+
+          document.getElementById("aiSignal").innerHTML = `
+      <div class="signal-card">
+
+        <div class="signal-header">
+          <div>
+            <span class="label">Selected Asset</span>
+            <h3>${coin.coin}</h3>
+          </div>
+
+          <div class="signal-badge">
+            ${coin.action}
+          </div>
+        </div>
+
+        <div class="signal-grid">
+          <div class="metric">
+            <span>Current Price</span>
+            <strong>$${Number(coin.price).toLocaleString()}</strong>
+          </div>
+
+          <div class="metric">
+            <span>24h Change</span>
+            <strong>${coin.change}%</strong>
+          </div>
+
+          <div class="metric">
+            <span>Support</span>
+            <strong>${coin.support}</strong>
+          </div>
+
+          <div class="metric">
+            <span>Resistance</span>
+            <strong>${coin.resistance}</strong>
+          </div>
+        </div>
+
+        <div class="trade-plan">
+
+          <div class="plan-box buy">
+            <span>AI Entry Plan</span>
+            <strong>${coin.entry}</strong>
+          </div>
+
+          <div class="plan-box sell">
+            <span>AI Exit Plan</span>
+            <strong>${coin.exit}</strong>
+          </div>
+
+          <div class="plan-box risk">
+            <span>Risk Level</span>
+            <strong>${coin.risk}</strong>
+          </div>
+
+          <div class="plan-box confidence">
+            <span>AI Confidence</span>
+            <strong>${coin.confidence}</strong>
+          </div>
+
+        </div>
+
+        <div class="trade-plan">
+
+          <div class="plan-box">
+            <span>Price Score</span>
+            <strong>${coin.priceScore}</strong>
+          </div>
+
+          <div class="plan-box">
+            <span>News Score</span>
+            <strong>${coin.newsScore}</strong>
+          </div>
+
+          <div class="plan-box">
+            <span>Final AI Score</span>
+            <strong>${coin.finalScore}</strong>
+          </div>
+
+          <div class="plan-box">
+            <span>High Impact News</span>
+            <strong>${coin.highImpactNews}</strong>
+          </div>
+
+        </div>
+
+        <div class="trade-plan">
+
+          <div class="plan-box risk">
+            <span>Suggested Stop Loss</span>
+            <strong>${coin.stopLoss}</strong>
+          </div>
+
+        </div>
+
+        <p class="reason">
+          <strong>AI Reason:</strong>
+          ${coin.reason}
+        </p>
+
+        <div class="news-impact">
+          <h4>AI News Analysis</h4>
+
+          ${coin.news
+            .map(
+              (item) => `
+            <a href="${item.link}" target="_blank" class="news-item">
+              <strong>${item.title}</strong>
+              <span>${new Date(item.date).toLocaleString()}</span>
+            </a>
+          `,
+            )
+            .join("")}
+        </div>
+
+        <div class="x-impact">
+          <h4>Reddit Market Sentiment</h4>
+          <div id="xImpact">
+            Monitoring X posts...
+          </div>
+        </div>
+
+        <p class="disclaimer">
+          Crypto trading is risky. This AI system is not financial advice.
+        </p>
+
+      </div>
+    `;
+
+          loadXSentiment();
+        } catch (error) {
+          console.error(error);
+
+          document.getElementById("aiSignal").innerHTML =
+            "Failed to load AI signal.";
+        }
+      }
+      async function loadMarketNews() {
+        try {
+          const res = await fetch("/api/market-news");
+          const news = await res.json();
+
+          document.getElementById("newsImpact").innerHTML = news
+            .map(
+              (item) => `
+          <a href="${item.link}" target="_blank" class="news-item">
+            <strong>${item.title}</strong>
+            <span>Impact: ${item.impact}</span>
+            <span>Sentiment: ${item.sentiment}</span>
+          </a>
+        `,
+            )
+            .join("");
+        } catch (error) {
+          document.getElementById("newsImpact").innerHTML =
+            "Unable to load live world news.";
+        }
+      }
+
+      loadChart(currentSymbol);
+      changeSymbol(currentSymbol);
+      getAISignal(currentSymbol);
+      loadMarketNews();
+      loadXSentiment();
+
+      setInterval(() => {
+        loadChart(currentSymbol);
+        getAISignal(currentSymbol);
+        loadMarketNews();
+        loadXSentiment();
+      }, 60 * 1000);
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
